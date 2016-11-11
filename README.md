@@ -1,5 +1,2 @@
-# homework.github.io
-# ruizjme.github.io
-# ruizjme.github.io
-# ruizjme.github.io
 # homework
+A homework problems feed webapp
