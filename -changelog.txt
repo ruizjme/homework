@@ -1,0 +1,29 @@
+
+==================
+TO DO:
+==================
+
+- Login with Facebook or email
+- Mine more problems from books or websites
+
+
+==================
+BUILD 0.4
+==================
+
+- Working on INSERT function (Could not open socket ERROR)
+    • Could be good to have a sql form with common fields (e.g. subject, topic), then input each question and answer one by one and batch upload the whole thing
+
+==================
+BUILD 0.3
+==================
+
+- Keyboard navigation (J, K, L)
+
+==================
+BUILD 0.1
+==================
+
+- Database functionality
+
+
