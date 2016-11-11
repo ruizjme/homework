@@ -12,7 +12,21 @@ require_once(dirname(__FILE__) . '/core/functions.php');
 ?>
 
 <?php
-$link = f_sqlConnect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$user = 'root';
+$password = 'root';
+$db = 'hw';
+$host = 'localhost';
+$port = 8889;
+
+$link = mysqli_init();
+$success = mysqli_real_connect(
+   $link, 
+   $host, 
+   $user, 
+   $password, 
+   $db,
+   $port
+);
 
 $q_sql = "SELECT * FROM t_questions";
 $to_sql = "SELECT * FROM t_topics";
@@ -23,9 +37,11 @@ $to_sql = "SELECT * FROM t_topics";
 
 <body>
 
-<?php include 'include/header.php'; ?>
-<?php include 'include/toggle-ans.php'; ?>
-<?php include 'include/hlight.php'; ?>
+<?php 
+include 'include/header.php';
+include 'include/toggle-ans.php';
+include 'include/hlight.php'; 
+?>
 
 <div class="container-fluid">
 
@@ -33,39 +49,42 @@ $to_sql = "SELECT * FROM t_topics";
 // TEST ELEMENT 1
 // include 'hw/element.php'
 ?>
+
 	<?php
-	$questions = mysql_query($q_sql);
-	$topics = mysql_query($to_sql);
-	$topic = mysql_fetch_array($topics);
+	$questions = mysqli_query($q_sql);
+	$topics = mysqli_query($to_sql);
+	$topic = mysqli_fetch_array($topics);
 	$n = 0;
 
-	while($question = mysql_fetch_array( $questions )){
-		echo "
-		<div class='form'>
-			<div class='form-top'>
-				<p class='subject'>".$topic['to_subject']."</p>
-				<p class='topic'>".$topic['to_topic']."</p>
-			</div>
-			<div class='form-top-right'>
-				<a href='' data-title='".$result['source']."' data-content='Tags: ".$result['tags']."' data-placement='right'>
-					<i class='material-icons'>more_vert</i>
-				</a>
-			</div>
-			<div class='question'>";
-			if ($question['figure']) {
-			echo "
-			<div class='figure'>
-				<img src='images/".$question['figure']."' />
-			</div>";
-			}
-		echo "	
-				<p>".$question['question']."</p>
-			</div>";
+	echo $questions;
+
+	// while($question = mysqli_fetch_array( $questions )){
+	// 	echo "
+	// 	<div class='form'>
+	// 		<div class='form-top'>
+	// 			<p class='subject'>".$topic['to_subject']."</p>
+	// 			<p class='topic'>".$topic['to_topic']."</p>
+	// 		</div>
+	// 		<div class='form-top-right'>
+	// 			<a href='' data-title='".$result['source']."' data-content='Tags: ".$result['tags']."' data-placement='right'>
+	// 				<i class='material-icons'>more_vert</i>
+	// 			</a>
+	// 		</div>
+	// 		<div class='question'>";
+	// 		if ($question['figure']) {
+	// 		echo "
+	// 		<div class='figure'>
+	// 			<img src='images/".$question['figure']."' />
+	// 		</div>";
+	// 		}
+	// 	echo "	
+	// 			<p>".$question['question']."</p>
+	// 		</div>";
 			
-		echo "
-			<div class='toggle'>".$question['answer']."</div>
-		</div>";
-	}
+	// 	echo "
+	// 		<div class='toggle'>".$question['answer']."</div>
+	// 	</div>";
+	// }
 	?>
 
 </div>
